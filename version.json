@@ -1,0 +1,11 @@
+{
+  "version": "2.2",
+  "release_date": "2025-12-24",
+  "download_url": "asas",
+  "checksum": "sha256:b576ee93470475eec54b1146c9c5b6aa74d149f4317c82769e809a1213f84a0e",
+  "file_size": 48431264,
+  "changelog": [
+    "as"
+  ],
+  "force_update": false
+}
