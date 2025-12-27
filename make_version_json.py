@@ -9,6 +9,7 @@ import os, io
 
 exe_default_file_name = "snap_crypt.exe"
 download_url_name = "https://raw.githubusercontent.com/nonopia/24.snap_version/main/version.json"
+download_url_name = "https://raw.githubusercontent.com/nonopia/24.snap_version/main/snap_crypt.exe"
 version_jason_file = "version.json"
 
 import PyInstaller.__main__ #python make_version_json.py --build

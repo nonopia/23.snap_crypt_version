@@ -13,6 +13,7 @@ from packaging import version as pkg_version
 
 exe_default_file_name = "snap_crypt.exe"
 download_url_name = "https://raw.githubusercontent.com/nonopia/24.snap_version/main/version.json"
+download_url_name = "https://raw.githubusercontent.com/nonopia/24.snap_version/main/snap_crypt.exe"
 version_jason_file = "version.json"
 
 class AutoUpdater:
@@ -77,12 +78,10 @@ class AutoUpdater:
                        progress_callback=None) -> Path:
         """
         업데이트 파일 다운로드 및 무결성 검증
-        
         Args:
             download_url: 다운로드 URL
             expected_checksum: 예상 SHA256 체크섬
-            progress_callback: 진행률 콜백 함수 (0-100)
-        
+            progress_callback: 진행률 콜백 함수 (0-100)        
         Returns:
             Path: 다운로드된 파일 경로 또는 None
         """
