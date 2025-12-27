@@ -7,10 +7,22 @@ from pathlib import Path
 from datetime import datetime
 import os, io
 
-exe_default_file_name = "snap_crypt.exe"
-download_url_name = "https://raw.githubusercontent.com/nonopia/24.snap_version/main/version.json"
-download_url_name = "https://raw.githubusercontent.com/nonopia/24.snap_version/main/snap_crypt.exe"
-version_jason_file = "version.json"
+version_info_dic = {
+        "version": "",
+        "release_date": "",
+        "download_url": "",
+        "checksum": "",
+        "file_size": 0,
+        "change_log": [],
+        "force_update": False
+    }
+    
+exe_file = "snap_crypt.exe"
+version_json_file = "version.json"
+download_main_url = "https://raw.githubusercontent.com/nonopia/24.snap_version/main/"
+download_json_url = download_main_url + version_json_file
+download_exe_file_url = download_main_url + exe_file
+
 
 import PyInstaller.__main__ #python make_version_json.py --build
 separator = ';' if os.name == 'nt' else ':' #Windows ';' / Linux ':' 
@@ -49,14 +61,14 @@ def calculate_checksum(file_path: Path) -> str:
             sha256_hash.update(chunk)
     return f"sha256:{sha256_hash.hexdigest()}"
 
-def create_version_json(version: str, download_url: str, exe_path: Path, changelog: list, output_path: Path = None, force_update: bool = False):
+def create_version_json(version: str, download_url: str, exe_path: Path, change_log: list, output_path: Path = None, force_update: bool = False):
     """
     version.json 파일 생성
     Args:
         version: 버전 번호 (예: "1.1.0")
         download_url: 다운로드 URL
         exe_path: 실행 파일 경로
-        changelog: 변경사항 목록
+        change_log: 변경사항 목록
         output_path: 출력 파일 경로 (기본: version.json)
         force_update: 강제 업데이트 여부
     """
@@ -65,29 +77,29 @@ def create_version_json(version: str, download_url: str, exe_path: Path, changel
         return False
     
     checksum = calculate_checksum(exe_path)
-    file_size = exe_path.stat().st_size 
+    file_size = exe_path.stat().st_size
 
     # version.json 데이터 생성
-    version_data = {
+    version_info_dic.update({
         "version": version,
-        "release_date": datetime.now().strftime("%Y-%m-%d"),
+        "release_date": datetime.now().strftime("%Y-%m-%d-%H:%M:%S"),
         "download_url": download_url,
         "checksum": checksum,
         "file_size": file_size,
-        "changelog": changelog,
+        "change_log": change_log,
         "force_update": force_update
-    }
-    
+    })
+
     # 출력 경로 설정 및 JSON 파일 저장     
     if output_path is None:
-        output_path = Path(version_jason_file)
+        output_path = Path(version_json_file)
     with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(version_data, f, indent=2, ensure_ascii=False)
+        json.dump(version_info_dic, f, indent=2, ensure_ascii=False)
     
     print(f"\nversion.json 생성 완료: {output_path}")
     print("\n생성된 내용:")
     print("=" * 60)
-    print(json.dumps(version_data, indent=2, ensure_ascii=False))
+    print(json.dumps(version_info_dic, indent=2, ensure_ascii=False))
     print("=" * 60)    
     return True
 
@@ -124,24 +136,24 @@ def main():
     print()
     
     version = get_user_input(f"버전 번호(빈 줄시 : 1.1.0 로 기본 설정): ", "1.1.0")
-    exe_path = get_user_input(f"실행 파일(빈 줄시 snap_crypt.exe 로 기본 설정): ", exe_default_file_name, "file")
-    download_url = get_user_input(f"다운로드 URL:(빈 줄시 {download_url_name} 로 기본 설정): ", download_url_name)
-    force = get_user_input(f"강제 업데이트?(y/n, 빈 줄시 'n'로 기본 설정): ", "n").lower()
+    exe_path = get_user_input(f"실행 파일(빈 줄시 {exe_file} 로 기본 설정): ", exe_file, "file")
+    download_url = get_user_input(f"다운로드 URL:(빈 줄시 {download_exe_file_url} 로 기본 설정): ", download_exe_file_url)
+    force = get_user_input(f"강제 업데이트? (y/n, 빈 줄시 'n'로 기본 설정): ", "n").lower()
 
     print("변경사항을 입력하세요 (빈 줄 입력 시 종료):")
-    changelog = []
+    change_log = []
     while True:
-        item = input(f"  {len(changelog) + 1}. ").strip()
+        item = input(f"  {len(change_log) + 1}. ").strip()
         if not item:
             break
-        changelog.append(item)
+        change_log.append(item)
     
     # version.json 생성
     create_version_json(
         version=version,
         download_url=download_url,
         exe_path=exe_path,
-        changelog=changelog,
+        change_log=change_log,
         force_update=force
     )
 
