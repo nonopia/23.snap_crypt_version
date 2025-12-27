@@ -1,9 +1,9 @@
 {
-  "version": "1.1.1",
+  "version": "1.1.2",
   "release_date": "2025-12-27",
   "download_url": "https://raw.githubusercontent.com/nonopia/24.snap_version/main/version.json",
-  "checksum": "sha256:867cef57cf5c633e3295d2aa0d47ba704a778652a0ad9ffe7647f487ad2dddba",
-  "file_size": 53532223,
+  "checksum": "sha256:4f33ba2effb1405a0f45f98c88b917c06a9862467e3cddb9da9f0d553f855f0f",
+  "file_size": 53529286,
   "changelog": [
     "test"
   ],
