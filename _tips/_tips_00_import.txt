@@ -1,0 +1,20 @@
+if __name__ == '__main__':
+    print(f'\n\npackage file : {__file__}\nPlease run main program\n\n')
+    sys.exit(-1)
+
+
+if __name__ == '__main__':
+    print(f'\n\npackage file : {__file__}\nPlease run main program\n\n')
+    exit()
+
+'''
+python.exe -m pip install --upgrade pip
+pip install packaging  #새로 설치/업그레이드 하였는데 일부 모듈을 찾을수 없다고 할떄
+
+pip install requests
+pip install pyinstaller
+  pyinstaller --onefile PC-Win.py
+  : onefile make시 특별한 모듈(예 : pyautogui)이 import 되지 않을 경우 아래를 코딩
+  from PyInstaller.utils.hooks import collect_submodules
+  hiddenimports = collect_submodules('pyautogui')
+'''
