@@ -1,9 +1,9 @@
 {
   "version": "2.0.1",
-  "release_date": "2025-12-29 / 13:57:12",
+  "release_date": "2025-12-29 / 14:05:26",
   "download_url": "https://raw.githubusercontent.com/nonopia/23.snap_crypt_version/main/snap_crypt.exe",
-  "checksum": "sha256:b7dcc252609ab6099dd9750006faa3c82630abce63ff44a4cdcca3fcaa63e00c",
-  "file_size": 54300560,
+  "checksum": "sha256:f3a6db8d14d05983976582158e1b34a0596d68abadf2bf336e997e7d8a679978",
+  "file_size": 54301004,
   "change_log": [
     "버전 콘트롤 기능 추가",
     "- V 2.0.0 부터 버전 콘트롤 기능 보유"
