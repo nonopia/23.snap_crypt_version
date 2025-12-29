@@ -1,0 +1,5 @@
+.gitignore 재설정
+ git rm -r --cached .
+ git add .
+ git commit -m "Apply .gitignore"
+ git push
