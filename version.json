@@ -1,13 +1,13 @@
 {
-  "version": "2.0.0",
-  "release_date": "2026-01-03 / 01:09:26",
+  "version": "2.0.1",
+  "release_date": "2026-01-03 / 14:04:07",
   "download_url": "https://raw.githubusercontent.com/nonopia/23.snap_crypt_version/main/",
   "file_name": "snap_crypt.exe",
-  "checksum": "sha256:d71d89c730636e0553dd2384efbc91934606888911b5c7fea3db6ed3e4a6f751",
-  "file_size": 54302926,
+  "checksum": "sha256:1b75fb4bd4e0f8ec21054c475d8994e67f589e5a269de98660851466c6db5755",
+  "file_size": 54301299,
   "change_log": [
-    "Version Control",
-    "snap.exe & version"
+    "Update Download 기능",
+    "임시 batch 화일을 tmp 에 넣어 수행후 삭제"
   ],
   "force_update": "n"
 }
